@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — The Daily Cosmos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0e1a;
+            color: #ccc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+        .stars {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 560px;
+        }
+        .error-code {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 120px;
+            font-weight: 900;
+            color: #1a3a5c;
+            line-height: 1;
+            margin-bottom: 16px;
+            text-shadow: 0 0 40px rgba(100, 150, 255, 0.15);
+        }
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 28px;
+            color: #eee;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #889;
+            margin-bottom: 14px;
+        }
+        .signal-lost {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 6px 16px;
+            border: 1px solid #334;
+            border-radius: 3px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #556;
+            animation: blink 2s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .home-link {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 10px 24px;
+            background: #1a3a5c;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .home-link:hover { background: #2a5a8c; }
+        .footer-note {
+            margin-top: 48px;
+            font-size: 11px;
+            color: #445;
+        }
+    </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="content">
+    <div class="error-code">404</div>
+    <h1>Signal Lost in Deep Space</h1>
+    <p>The page you requested has drifted beyond the reach of our telemetry systems. It may have been pulled into a decaying orbit, consumed by a rogue micrometeorite, or simply never existed in this region of spacetime.</p>
+    <p>Our ground stations are scanning all frequencies. In the meantime, we recommend returning to a known coordinate.</p>
+    <div class="signal-lost">⚠ Signal acquisition failed — no carrier detected</div>
+    <br>
+    <a href="index.html" class="home-link">← Return to Mission Control</a>
+    <p class="footer-note">The Daily Cosmos · Your finger on the pulsar of cosmic events</p>
+</div>
+
+<script>
+    // Generate star field
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (2 + Math.random() * 3) + 's';
+        const size = Math.random() > 0.9 ? 3 : Math.random() > 0.6 ? 2 : 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        container.appendChild(star);
+    }
+</script>
+
+</body>
+</html>
